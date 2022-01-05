@@ -6,7 +6,9 @@ import numpy as np
     #line_count = 0
 train_set = np.array([])
 
-for offset in range(0,10):
+sample_length=100
+
+for offset in range(0,sample_length):
     sample = []
     line_count=0
     with open('C:\\Users\\Andrew\\Documents\\StockML\\GIS.csv') as csv_file:
@@ -21,7 +23,7 @@ for offset in range(0,10):
                 line_count+=1
                 continue
             else: 
-                if((line_count-offset)%11 == 0 and line_count>offset):
+                if((line_count-offset)%(sample_length+1) == 0 and line_count>offset):
                     #print('line_count: '+str(line_count))
                     #print('offset: ' + str(offset))
                     if(float(row[1])>= sample[-1]):
